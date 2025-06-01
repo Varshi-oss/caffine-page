@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Caffein - Coffee Paradise</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #3b1e1e;
+      color: #fff;
+    }
+
+    /* FIXED HEADER */
+    header {
+      background-color: #2a1515;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    }
+
+    /* To prevent content hiding behind fixed header */
+    body {
+      padding-top: 80px; /* same height as header + some spacing */
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #ffcc99;
+    }
+
+    nav {
+      display: flex;
+      gap: 40px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    nav a {
+      color: #ffe5d0;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #ffcc99;
+      color: #2a1515;
+      border-radius: 8px;
+    }
+
+    section {
+      padding: 60px 10%;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-content {
+      max-width: 50%;
+    }
+
+    .hero h2 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #ffcc99;
+    }
+
+    .hero p {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #f8e1d9;
+    }
+
+    .hero-buttons button {
+      background-color: #ff944d;
+      border: none;
+      padding: 12px 20px;
+      margin-right: 15px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #2a1515;
+    }
+
+    .hero img {
+      max-width: 450px;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+   
+    #about {
+      background-color: #fff;
+      color: #3b1e1e;
+    }
+
+    .about-container {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .about-container img {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-text h2 {
+      margin-bottom: 20px;
+      color: #3b1e1e;
+    }
+
+    .about-text p {
+      color: #444;
+      font-size: 17px;
+    }
+
+    .menu-section h2,
+    .testimonial-section h2,
+    .contact-section h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #ffcc99;
+    }
+
+    
+    .menu-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px; 
+      padding: 10px 0;
+    }
+
+    @media (max-width: 992px) {
+      .menu-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .menu-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .menu-card {
+      background-color: #1a1a1a;
+      color: #fff;
+      padding: 30px; 
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+      min-height: 420px; 
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .menu-card h3 {
+      color: #ffcc99;
+      margin-bottom: 10px;
+    }
+
+    .menu-card p {
+      color: #e0e0e0;
+      margin-top: auto; /* Push description to bottom */
+      font-size: 16px;
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 320px; 
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      filter: brightness(1.1);
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-section {
+      background-color: #fffbf7;
+      color: #3b1e1e;
+      text-align: center;
+    }
+
+    .testimonial-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 300px;
+    }
+
+   
+    .testimonial-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .testimonial-card img:hover {
+      transform: scale(1.05);
+    }
+
+    /* CONTACT SECTION */
+    .contact-section {
+      background-color: #2a1515;
+      color: #ffe5d0;
+      text-align: center;
+    }
+
+    .contact-section p {
+      margin-bottom: 10px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-container img {
+        margin-bottom: 20px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>☕ Caffein</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Make your day great with our special coffee!</h2>
+      <p>Welcome to our coffee paradise, where every bean tells a story and every cup sparks joy.</p>
+      <div class="hero-buttons">
+        <button>Order Now</button>
+        <button>Contact Us</button>
+      </div>
+    </div>
+    <img src="imgcof.png" alt="Coffee Splash">
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="about-container">
+      <img src="pic.png" alt="About Coffee">
+      <div class="about-text">
+        <h2>About Us</h2>
+        <p>
+          At Caffein, we blend passion and flavor in every cup. Our journey began with a single goal—delivering the finest coffee experience. Whether you're a cappuccino lover or a mocha enthusiast, we brew every cup with care, using handpicked beans roasted to perfection.
+          <br><br>
+          We’re not just about coffee—we’re about community. A place where conversations spark, ideas are born, and every sip tells a story. Join us in this journey of aroma, taste, and comfort.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section id="menu" class="menu-section">
+    <h2>Our Menu</h2>
+    <div class="menu-cards">
+      <div class="menu-card">
+        <img src="hot-beverages.png" alt="Hot Beverages">
+        <h3>Hot Beverages</h3>
+        <p>Cappuccino, Espresso, Americano, Latte</p>
+      </div>
+      <div class="menu-card">
+        <img src="cold-beverages.png" alt="Cool Beverages">
+        <h3>Cool Beverages</h3>
+        <p>Cold Brew, Iced Latte, Mocha Shake</p>
+      </div>
+      <div class="menu-card">
+        <img src="refreshment.png" alt="Refreshments">
+        <h3>Refreshments</h3>
+        <p>Lemonade, Mint Cooler, Herbal Tea</p>
+      </div>
+      <div class="menu-card">
+        <img src="special-combo.png" alt="Combos">
+        <h3>Combos</h3>
+        <p>Latte + Donut, Espresso + Croissant</p>
+      </div>
+      <div class="menu-card">
+        <img src="desserts.png" alt="Cool Drinks">
+        <h3>Cool Drinks</h3>
+        <p>Smoothies, Iced Tea, Cold Coffee</p>
+      </div>
+      <div class="menu-card">
+        <img src="burger-fries.png" alt="Burger and Fries">
+        <h3>Burgers & French Fries</h3>
+        <p>Veg Burger, Cheese Burger, Peri Fries, Loaded Fries</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="testimonial-section">
+    <h2>Testimonials</h2>
+    <div class="testimonial-cards">
+      <div class="testimonial-card">
+        <img src="4.jpg" alt="Customer 1">
+        <h4>Anjali Rao</h4>
+        <p>"A cozy place with amazing cappuccinos! The staff is super friendly. My go-to café!"</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="2.jpg" alt="Customer 2">
+        <h4>Rohit Sharma</h4>
+        <p>"Love the ambience. The iced mocha is the best I’ve ever had!"</p>
+      </div>
+      <div class="testimonial-card">
+        <img src="3.jpg" alt="Customer 3">
+        <h4>Sneha Verma</h4>
+        <p>"Perfect place for brunch. Their combo meals are affordable and filling."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <p>Email: contact@caffein.com</p>
+    <p>Phone: +91 98765 43210</p>
+    <p>Visit us at: 123 Brew Street, Coffee City</p>
+  </section>
+
+</body>
+</html>
